@@ -19,3 +19,8 @@ app.get("/api/greeting", (req, res) => {
   console.log("API Triggered");
   res.send({ hello: "Hello World! from the server" });
 });
+
+//add health check route to return status
+app.get("/api/status", (req, res) => {
+  res.send({ status: "OK" });
+} );  
