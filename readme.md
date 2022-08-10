@@ -4,9 +4,9 @@ npm run dep-install
 ```
 # Run Backend:
 ```bash
-nodemon start server/server.js
+npm run start-back
 ```
 # Run Frontend:
 ```bash
-cd client && npm start
+npm run start-front
 ```

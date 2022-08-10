@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon start server/server.js",
+    "start-back": "nodemon start server/server.js",
+    "start-front": "cd client && npm start",
     "dep-install": "cd client && npm install && cd .. && npm install",
     "dep-update": "cd client && npm update && cd .. && npm update"
   },
