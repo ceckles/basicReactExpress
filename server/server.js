@@ -17,7 +17,7 @@ app.listen(port, () => console.log(`Listening on port ${baseURL}:${port}`));
 //add get route to return greeting
 app.get("/api/greeting", (req, res) => {
   console.log("API Triggered");
-  res.send({ hello: "Hello World! from the server" });
+  res.send({ greeting: "Hello World! from the server" });
 });
 
 //add health check route to return status

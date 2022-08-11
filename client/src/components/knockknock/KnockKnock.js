@@ -17,7 +17,7 @@ const KnockKnock = () => {
         onClick={() => {
           fetch("http://localhost:3001/api/greeting") //fetch from backend
             .then((res) => res.json()) //parse response as json
-            .then((data) => setGreeting(data.hello)) //update greeting state
+            .then((data) => setGreeting(data.greeting)) //update greeting state
             .catch((err) => console.log(err)); //log error if any
         }}
       >

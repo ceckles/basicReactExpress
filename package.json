@@ -4,20 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start-back": "nodemon start server/server.js",
     "start-front": "cd client && npm start",
     "dep-install": "cd client && npm install && cd .. && npm install",
-    "dep-update": "cd client && npm update && cd .. && npm update"
+    "dep-update": "cd client && npm update && cd .. && npm update",
+    "PW-Test": "npx playwright test",
+    "PW-Test-Report":"npx playwright show-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "cors": "^2.8.5",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "jest": "^28.1.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.24.2",
     "nodemon": "^2.0.19"
   }
 }
