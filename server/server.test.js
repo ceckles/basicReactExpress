@@ -1,6 +1,7 @@
 const axios = require("axios");
 
-//useing axios to make a get request to the server greeting endpoint and validate the response and is type of json
+// useing axios to make a get request to the server greeting
+// endpoint and validate the response and is type of json
 describe("GET Greeting Endpoint", () => {
   test("Getting Proper Greeting response", async () => {
     const response = await axios.get("http://localhost:3001/api/greeting");
@@ -9,7 +10,8 @@ describe("GET Greeting Endpoint", () => {
   });
 });
 
-//using axios make a get request to the server greeting endpoint passing name and validate the response
+// using axios make a get request to the server greeting endpoint
+// passing name and validate the response
 describe("GET Greeting Endpoint with name", () => {
   test("Getting Proper Greeting response", async () => {
     const response = await axios.get("http://localhost:3001/api/greeting/John");
@@ -18,7 +20,7 @@ describe("GET Greeting Endpoint with name", () => {
   });
 });
 
-//ussing axios to make a get request to the server status endpoint and validate the response
+// ussing axios to make a get request to the server status endpoint and validate the response
 describe("GET Status Endpoint", () => {
   test("server is running", async () => {
     const response = await axios.get("http://localhost:3001/api/status");
