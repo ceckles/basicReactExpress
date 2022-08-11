@@ -9,4 +9,4 @@ npx lint-staged ||
     false;
 )
 # If everything passes... Now we can commit
-echo '✅✅✅✅ 🧙‍♂️ You Shall Pass this time... I am committing this now.🧙 ✅✅✅✅'
+echo '✅✅✅✅ You Passed this time... I am committing this now. ✅✅✅✅'
