@@ -17,4 +17,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run Server and Tests
-        run: npm start /server/server.js & npm test
+        run: npm run start-back & npm test
