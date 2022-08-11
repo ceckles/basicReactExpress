@@ -30,6 +30,7 @@ test.describe("New Todo", () => {
       TODO_ITEMS[1],
     ]);
 
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfTodosInLocalStorage(page, 2);
   });
 
@@ -42,6 +43,7 @@ test.describe("New Todo", () => {
 
     // Check that input is empty.
     await expect(page.locator(".new-todo")).toBeEmpty();
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfTodosInLocalStorage(page, 1);
   });
 
@@ -49,6 +51,7 @@ test.describe("New Todo", () => {
     page,
   }) => {
     // Create 3 items.
+    // eslint-disable-next-line no-use-before-define
     await createDefaultTodos(page);
 
     // Check test using different methods.
@@ -58,6 +61,7 @@ test.describe("New Todo", () => {
 
     // Check all items in one call.
     await expect(page.locator(".view label")).toHaveText(TODO_ITEMS);
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfTodosInLocalStorage(page, 3);
   });
 
@@ -67,17 +71,21 @@ test.describe("New Todo", () => {
 
     await expect(page.locator(".main")).toBeVisible();
     await expect(page.locator(".footer")).toBeVisible();
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfTodosInLocalStorage(page, 1);
   });
 });
 
 test.describe("Mark all as completed", () => {
   test.beforeEach(async ({ page }) => {
+    // eslint-disable-next-line no-use-before-define
     await createDefaultTodos(page);
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfTodosInLocalStorage(page, 3);
   });
 
   test.afterEach(async ({ page }) => {
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfTodosInLocalStorage(page, 3);
   });
 
@@ -91,6 +99,7 @@ test.describe("Mark all as completed", () => {
       "completed",
       "completed",
     ]);
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfCompletedTodosInLocalStorage(page, 3);
   });
 
@@ -111,6 +120,7 @@ test.describe("Mark all as completed", () => {
     const toggleAll = page.locator(".toggle-all");
     await toggleAll.check();
     await expect(toggleAll).toBeChecked();
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfCompletedTodosInLocalStorage(page, 3);
 
     // Uncheck first todo.
@@ -121,6 +131,7 @@ test.describe("Mark all as completed", () => {
     await expect(toggleAll).not.toBeChecked();
 
     await firstTodo.locator(".toggle").check();
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfCompletedTodosInLocalStorage(page, 3);
 
     // Assert the toggle all is checked again.
@@ -131,8 +142,11 @@ test.describe("Mark all as completed", () => {
 test.describe("Item", () => {
   test("should allow me to mark items as complete", async ({ page }) => {
     // Create two items.
+    // eslint-disable-next-line no-restricted-syntax
     for (const item of TODO_ITEMS.slice(0, 2)) {
+      // eslint-disable-next-line no-await-in-loop
       await page.locator(".new-todo").fill(item);
+      // eslint-disable-next-line no-await-in-loop
       await page.locator(".new-todo").press("Enter");
     }
 
@@ -153,8 +167,11 @@ test.describe("Item", () => {
 
   test("should allow me to un-mark items as complete", async ({ page }) => {
     // Create two items.
+    // eslint-disable-next-line no-restricted-syntax
     for (const item of TODO_ITEMS.slice(0, 2)) {
+      // eslint-disable-next-line no-await-in-loop
       await page.locator(".new-todo").fill(item);
+      // eslint-disable-next-line no-await-in-loop
       await page.locator(".new-todo").press("Enter");
     }
 
@@ -163,15 +180,18 @@ test.describe("Item", () => {
     await firstTodo.locator(".toggle").check();
     await expect(firstTodo).toHaveClass("completed");
     await expect(secondTodo).not.toHaveClass("completed");
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfCompletedTodosInLocalStorage(page, 1);
 
     await firstTodo.locator(".toggle").uncheck();
     await expect(firstTodo).not.toHaveClass("completed");
     await expect(secondTodo).not.toHaveClass("completed");
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfCompletedTodosInLocalStorage(page, 0);
   });
 
   test("should allow me to edit an item", async ({ page }) => {
+    // eslint-disable-next-line no-use-before-define
     await createDefaultTodos(page);
 
     const todoItems = page.locator(".todo-list li");
@@ -187,13 +207,16 @@ test.describe("Item", () => {
       "buy some sausages",
       TODO_ITEMS[2],
     ]);
+    // eslint-disable-next-line no-use-before-define
     await checkTodosInLocalStorage(page, "buy some sausages");
   });
 });
 
 test.describe("Editing", () => {
   test.beforeEach(async ({ page }) => {
+    // eslint-disable-next-line no-use-before-define
     await createDefaultTodos(page);
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfTodosInLocalStorage(page, 3);
   });
 
@@ -202,6 +225,7 @@ test.describe("Editing", () => {
     await todoItem.dblclick();
     await expect(todoItem.locator(".toggle")).not.toBeVisible();
     await expect(todoItem.locator("label")).not.toBeVisible();
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfTodosInLocalStorage(page, 3);
   });
 
@@ -216,6 +240,7 @@ test.describe("Editing", () => {
       "buy some sausages",
       TODO_ITEMS[2],
     ]);
+    // eslint-disable-next-line no-use-before-define
     await checkTodosInLocalStorage(page, "buy some sausages");
   });
 
@@ -230,6 +255,7 @@ test.describe("Editing", () => {
       "buy some sausages",
       TODO_ITEMS[2],
     ]);
+    // eslint-disable-next-line no-use-before-define
     await checkTodosInLocalStorage(page, "buy some sausages");
   });
 
@@ -262,12 +288,14 @@ test.describe("Counter", () => {
     await page.locator(".new-todo").press("Enter");
     await expect(page.locator(".todo-count")).toContainText("2");
 
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfTodosInLocalStorage(page, 2);
   });
 });
 
 test.describe("Clear completed button", () => {
   test.beforeEach(async ({ page }) => {
+    // eslint-disable-next-line no-use-before-define
     await createDefaultTodos(page);
   });
 
@@ -297,8 +325,11 @@ test.describe("Clear completed button", () => {
 
 test.describe("Persistence", () => {
   test("should persist its data", async ({ page }) => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const item of TODO_ITEMS.slice(0, 2)) {
+      // eslint-disable-next-line no-await-in-loop
       await page.locator(".new-todo").fill(item);
+      // eslint-disable-next-line no-await-in-loop
       await page.locator(".new-todo").press("Enter");
     }
 
@@ -308,6 +339,7 @@ test.describe("Persistence", () => {
     await expect(todoItems).toHaveClass(["completed", ""]);
 
     // Ensure there is 1 completed item.
+    // eslint-disable-next-line no-use-before-define
     checkNumberOfCompletedTodosInLocalStorage(page, 1);
 
     // Now reload.
@@ -319,15 +351,18 @@ test.describe("Persistence", () => {
 
 test.describe("Routing", () => {
   test.beforeEach(async ({ page }) => {
+    // eslint-disable-next-line no-use-before-define
     await createDefaultTodos(page);
     // make sure the app had a chance to save updated todos in storage
     // before navigating to a new view, otherwise the items can get lost :(
     // in some frameworks like Durandal
+    // eslint-disable-next-line no-use-before-define
     await checkTodosInLocalStorage(page, TODO_ITEMS[0]);
   });
 
   test("should allow me to display active items", async ({ page }) => {
     await page.locator(".todo-list li .toggle").nth(1).check();
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfCompletedTodosInLocalStorage(page, 1);
     await page.locator(".filters >> text=Active").click();
     await expect(page.locator(".todo-list li")).toHaveCount(2);
@@ -339,6 +374,7 @@ test.describe("Routing", () => {
 
   test("should respect the back button", async ({ page }) => {
     await page.locator(".todo-list li .toggle").nth(1).check();
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfCompletedTodosInLocalStorage(page, 1);
 
     await test.step("Showing all items", async () => {
@@ -363,6 +399,7 @@ test.describe("Routing", () => {
 
   test("should allow me to display completed items", async ({ page }) => {
     await page.locator(".todo-list li .toggle").nth(1).check();
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfCompletedTodosInLocalStorage(page, 1);
     await page.locator(".filters >> text=Completed").click();
     await expect(page.locator(".todo-list li")).toHaveCount(1);
@@ -370,6 +407,7 @@ test.describe("Routing", () => {
 
   test("should allow me to display all items", async ({ page }) => {
     await page.locator(".todo-list li .toggle").nth(1).check();
+    // eslint-disable-next-line no-use-before-define
     await checkNumberOfCompletedTodosInLocalStorage(page, 1);
     await page.locator(".filters >> text=Active").click();
     await page.locator(".filters >> text=Completed").click();
@@ -393,8 +431,11 @@ test.describe("Routing", () => {
 });
 
 async function createDefaultTodos(page) {
+  // eslint-disable-next-line no-restricted-syntax
   for (const item of TODO_ITEMS) {
+    // eslint-disable-next-line no-await-in-loop
     await page.locator(".new-todo").fill(item);
+    // eslint-disable-next-line no-await-in-loop
     await page.locator(".new-todo").press("Enter");
   }
 }
@@ -404,9 +445,11 @@ async function createDefaultTodos(page) {
  * @param {number} expected
  */
 async function checkNumberOfTodosInLocalStorage(page, expected) {
-  return await page.waitForFunction((e) => {
-    return JSON.parse(localStorage["react-todos"]).length === e;
-  }, expected);
+  // eslint-disable-next-line no-return-await
+  return await page.waitForFunction(
+    (e) => JSON.parse(localStorage["react-todos"]).length === e,
+    expected
+  );
 }
 
 /**
@@ -414,12 +457,13 @@ async function checkNumberOfTodosInLocalStorage(page, expected) {
  * @param {number} expected
  */
 async function checkNumberOfCompletedTodosInLocalStorage(page, expected) {
-  return await page.waitForFunction((e) => {
-    return (
+  // eslint-disable-next-line no-return-await
+  return await page.waitForFunction(
+    (e) =>
       JSON.parse(localStorage["react-todos"]).filter((i) => i.completed)
-        .length === e
-    );
-  }, expected);
+        .length === e,
+    expected
+  );
 }
 
 /**
@@ -427,9 +471,12 @@ async function checkNumberOfCompletedTodosInLocalStorage(page, expected) {
  * @param {string} title
  */
 async function checkTodosInLocalStorage(page, title) {
-  return await page.waitForFunction((t) => {
-    return JSON.parse(localStorage["react-todos"])
-      .map((i) => i.title)
-      .includes(t);
-  }, title);
+  // eslint-disable-next-line no-return-await
+  return await page.waitForFunction(
+    (t) =>
+      JSON.parse(localStorage["react-todos"])
+        .map((i) => i.title)
+        .includes(t),
+    title
+  );
 }
