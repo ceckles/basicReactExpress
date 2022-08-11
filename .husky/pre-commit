@@ -5,8 +5,8 @@ echo '🏗️👷 Styling, testing and building your project before committing'
 
 npx lint-staged ||
 (
-    echo '🤢🤮🤢🤮 Its RAW - Your styling looks disgusting. 🤢🤮🤢🤮
-            Prettier Check Failed. Run npm run format, add changes and try commit again.';
+    echo '🤢🤮🤢🤮 Its RAW - You Failed Style and Lint checking 🤢🤮🤢🤮';
     false;
 )
-
+# If everything passes... Now we can commit
+echo '✅✅✅✅ 🧙‍♂️ You Shall Pass this time... I am committing this now.🧙‍♂️ ✅✅✅✅'
