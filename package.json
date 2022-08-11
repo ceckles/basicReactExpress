@@ -3,25 +3,31 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start-back": "nodemon start server/server.js",
-    "start-front": "cd client && npm start",
-    "dep-install": "cd client && npm install && cd .. && npm install",
-    "dep-update": "cd client && npm update && cd .. && npm update",
-    "PW-Test": "npx playwright test",
-    "PW-Test-Report":"npx playwright show-report"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "start-back": "nodemon start server/server.js",
+    "start-front": "cd client && npm start",
+    "PW-Test": "npx playwright test",
+    "PW-Test-Report": "npx playwright show-report",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
   "dependencies": {
     "axios": "^0.27.2",
     "cors": "^2.8.5",
-    "express": "^4.18.1",
-    "jest": "^28.1.3"
+    "express": "^4.18.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.24.2",
-    "nodemon": "^2.0.19"
+    "@playwright/test": "^1.25.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.3",
+    "lint-staged": "^13.0.3",
+    "nodemon": "^2.0.19",
+    "prettier": "2.7.1"
   }
 }
