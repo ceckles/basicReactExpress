@@ -1,7 +1,9 @@
+[![Playwright Tests](https://github.com/ceckles/basicReactExpress/actions/workflows/playwright.yml/badge.svg)](https://github.com/ceckles/basicReactExpress/actions/workflows/playwright.yml)
+
 # Install
 
 ```bash
-npm run dep-install
+npm install on root and client folder's
 ```
 
 # Run Backend:
