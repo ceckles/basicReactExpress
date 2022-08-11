@@ -17,3 +17,5 @@ npm run start-back
 ```bash
 npm run start-front
 ```
+
+this project runs prettier and eslint on commit to check style and code compliance. and will cancel if errors are encountered.
