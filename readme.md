@@ -1,4 +1,4 @@
-[![Playwright Tests](https://github.com/ceckles/basicReactExpress/actions/workflows/playwright.yml/badge.svg)](https://github.com/ceckles/basicReactExpress/actions/workflows/playwright.yml)
+[![Playwright Tests](https://github.com/ceckles/basicReactExpress/actions/workflows/playwright.yml/badge.svg)](https://github.com/ceckles/basicReactExpress/actions/workflows/playwright.yml)[![Jest Tests](https://github.com/ceckles/basicReactExpress/actions/workflows/jest.yml/badge.svg)](https://github.com/ceckles/basicReactExpress/actions/workflows/jest.yml)
 
 # Install
 
