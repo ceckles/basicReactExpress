@@ -28,6 +28,17 @@ app.get("/api/greeting/:name", (req, res) => {
   res.send({ greeting: `Hello ${req.params.name}! from the server` });
 });
 
+//Get route to convert string to binary
+app.get("/api/binary/:string", (req, res) => {
+  // console.log("API Triggered");
+  const { string } = req.params;
+  const binary = string
+    .split("")
+    .map((char) => char.charCodeAt(0).toString(2))
+    .join(" ");
+  res.send({ binary });
+});
+
 // health check route to return status
 app.get("/api/status", (req, res) => {
   res.send({ status: "OK" });
