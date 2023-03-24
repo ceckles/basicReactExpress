@@ -1,45 +1,42 @@
-const cors = require("cors");
-const express = require("express");
-
+/* eslint-disable no-unused-vars */
+const express = require('express');
 const app = express();
-const port = process.env.PORT || 3001;
-const baseURL = process.env.BASE_URL || "http://localhost";
 
-// corse to allow cross-origin requests
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-  })
-);
+// set the view engine to ejs
+app.set('view engine', 'ejs');
 
-// Listen to requests on port 3001
-// eslint-disable-next-line no-console
-app.listen(port, () => console.log(`Listening on port ${baseURL}:${port}`));
-
-// Get route to return greeting
-app.get("/api/greeting", (req, res) => {
-  // console.log("API Triggered");
-  res.send({ greeting: "Hello World! from the server" });
+app.get('/', (req, res, next) => {
+  //res.json({ characters: ['Luke', 'Leia', 'Han'] });
+  throw new Error('BROKEN');
 });
 
-// Get route to return a greeting to the user with their name
-app.get("/api/greeting/:name", (req, res) => {
-  // console.log("API Triggered");
-  res.send({ greeting: `Hello ${req.params.name}! from the server` });
+//Catch 404 and forward to error handler
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-//Get route to convert string to binary
-app.get("/api/binary/:string", (req, res) => {
-  // console.log("API Triggered");
-  const { string } = req.params;
-  const binary = string
-    .split("")
-    .map((char) => char.charCodeAt(0).toString(2))
-    .join(" ");
-  res.send({ binary });
+app.use((err, req, res, next) => {
+  if (err.status === 404) {
+    res.status(404).render('notfound.ejs', {
+      error: err.message,
+      status: 404,
+      message: 'Not Found',
+      stack: err.stack,
+    });
+    next();
+  } else {
+    res.status(500).render('error.ejs', {
+      error: err.message,
+      status: 500,
+      message: 'Internal Server Error',
+      stack: err.stack,
+    });
+    next();
+  }
 });
 
-// health check route to return status
-app.get("/api/status", (req, res) => {
-  res.send({ status: "OK" });
+app.listen(3001, () => {
+  console.log('Server listening on port 3001');
 });

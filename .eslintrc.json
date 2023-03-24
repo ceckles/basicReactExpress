@@ -1,6 +1,7 @@
 {
   "env": {
-    "browser": true,
+    "node": true,
+    "browser": false,
     "es2021": true,
     "jest": true
   },
@@ -25,7 +26,7 @@
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
     "semi": ["error", "always"],
-    "quotes": ["error", "double"],
+    "quotes": ["error", "single"],
     "no-const-assign": 2,
     "no-dupe-args": 2,
     "no-dupe-class-members": 1,
