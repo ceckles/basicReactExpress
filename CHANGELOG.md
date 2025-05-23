@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/ceckles/basicReactExpress/compare/v1.0.0...v1.1.0) (2025-05-23)
+
+
+### Features
+
+* added random number route ([13a49ec](https://github.com/ceckles/basicReactExpress/commit/13a49ec7ebecc7685453b4bc2138380ce2a6a53a))
+
 # 1.0.0 (2025-05-23)
 
 
