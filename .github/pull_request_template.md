@@ -1,36 +1,42 @@
 ### ✨ Summary
 
-<!-- Briefly explain what this PR does and why -->
+<!-- Describe what this PR does and why it matters. What problem does it solve? -->
 
 ---
 
 ### 🧱 Changes
 
-- <!-- e.g., Added new packages -->
-- <!-- e.g., Removed legacy files -->
-- <!-- e.g., Updated project structure -->
-
+- <!-- List all significant changes (e.g., added packages, removed legacy files, added templates) -->
+- 
 ---
 
-### 📦 Type of Change
+### 📦 Types of Changes
 
-<!-- Select one (or more) by removing the others -->
-- `feat` – New feature
-- `fix` – Bug fix
-- `chore` – Maintenance, tooling, config
-- `refactor` – Code cleanup without feature change
-- `docs` – Documentation only
-- `test` – Adding or updating tests
+<!-- Check all that apply -->
+- [ ] `feat` – New feature
+- [ ] `fix` – Bug fix
+- [ ] `chore` – Maintenance (e.g., tooling, configs)
+- [ ] `refactor` – Code cleanup (no behavior change)
+- [ ] `docs` – Documentation only
+- [ ] `test` – Adding or updating tests
 
 ---
 
 ### 🧪 How to Test
 
-<!-- Instructions for testing the changes locally or in staging -->
+<!-- Provide steps to test the changes locally, in dev/staging, or through unit tests -->
 
 ---
 
 ### 📎 Related Issues / Context
 
-<!-- Reference related issues or give more context if needed -->
-<!-- e.g., Closes #12, Related to #33 -->
+<!-- Link to related issues or PRs (e.g., Closes #123, Related to #456) -->
+
+---
+
+### ✅ Checklist
+
+- [ ] Code runs without errors
+- [ ] All commits follow Conventional Commits
+- [ ] PR title follows semantic format (`feat: ...`, `fix: ...`)
+- [ ] CHANGELOG updated (if needed)
