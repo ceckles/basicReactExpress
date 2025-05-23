@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/ceckles/basicReactExpress/compare/v1.2.2...v1.2.3) (2025-05-23)
+
+
+### Bug Fixes
+
+* fix packages and version control ([14b2cd2](https://github.com/ceckles/basicReactExpress/commit/14b2cd28c8d30ef43ef99641c5de8ce7934d3a62))
+
 ## [1.2.2](https://github.com/ceckles/basicReactExpress/compare/v1.2.1...v1.2.2) (2025-05-23)
 
 
