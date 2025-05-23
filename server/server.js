@@ -8,6 +8,7 @@ const rfs = require("rotating-file-stream");
 const greetingRoutes = require("./routes/greeting");
 const binaryRoutes = require("./routes/binary");
 const statusRoutes = require("./routes/status");
+const numberRoutes = require("./routes/number");
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -41,6 +42,7 @@ app.use(
 app.use("/api/greeting", greetingRoutes);
 app.use("/api/binary", binaryRoutes);
 app.use("/api/status", statusRoutes);
+app.use("/api/number", numberRoutes);
 
 // === Server Start ===
 app.listen(port, () => {
