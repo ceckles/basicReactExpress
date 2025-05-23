@@ -6,10 +6,7 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
-    "airbnb",
     "prettier",
-    "plugin:playwright/playwright-test"
   ],
   "parserOptions": {
     "ecmaFeatures": {

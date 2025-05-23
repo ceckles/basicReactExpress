@@ -1,45 +1,48 @@
-const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
 const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
+const rfs = require("rotating-file-stream");
+
+const greetingRoutes = require("./routes/greeting");
+const binaryRoutes = require("./routes/binary");
+const statusRoutes = require("./routes/status");
 
 const app = express();
 const port = process.env.PORT || 3001;
 const baseURL = process.env.BASE_URL || "http://localhost";
 
-// corse to allow cross-origin requests
+// === Logging Setup ===
+
+// Ensure logs directory exists
+const logDirectory = path.join(__dirname, "logs");
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+
+// Create a rotating write stream (daily rotation, keep 30 days)
+const accessLogStream = rfs.createStream("access.log", {
+  interval: "1d", // rotate daily
+  path: logDirectory,
+  maxFiles: 30, // keep logs for 30 days
+  compress: "gzip", // compress rotated files
+});
+
+// Setup morgan to use the rotating file stream
+app.use(morgan("combined", { stream: accessLogStream }));
+
+// === Middleware ===
 app.use(
   cors({
     origin: "http://localhost:3000",
   })
 );
 
-// Listen to requests on port 3001
-// eslint-disable-next-line no-console
-app.listen(port, () => console.log(`Listening on port ${baseURL}:${port}`));
+// === Routes ===
+app.use("/api/greeting", greetingRoutes);
+app.use("/api/binary", binaryRoutes);
+app.use("/api/status", statusRoutes);
 
-// Get route to return greeting
-app.get("/api/greeting", (req, res) => {
-  // console.log("API Triggered");
-  res.send({ greeting: "Hello World! from the server" });
-});
-
-// Get route to return a greeting to the user with their name
-app.get("/api/greeting/:name", (req, res) => {
-  // console.log("API Triggered");
-  res.send({ greeting: `Hello ${req.params.name}! from the server` });
-});
-
-//Get route to convert string to binary
-app.get("/api/binary/:string", (req, res) => {
-  // console.log("API Triggered");
-  const { string } = req.params;
-  const binary = string
-    .split("")
-    .map((char) => char.charCodeAt(0).toString(2))
-    .join(" ");
-  res.send({ binary });
-});
-
-// health check route to return status
-app.get("/api/status", (req, res) => {
-  res.send({ status: "OK" });
+// === Server Start ===
+app.listen(port, () => {
+  console.log(`Listening on port ${baseURL}:${port}`);
 });
