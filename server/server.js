@@ -9,6 +9,7 @@ const greetingRoutes = require("./routes/greeting");
 const binaryRoutes = require("./routes/binary");
 const statusRoutes = require("./routes/status");
 const numberRoutes = require("./routes/number");
+const surpriseRoutes = require("./routes/surprise");
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -43,6 +44,7 @@ app.use("/api/greeting", greetingRoutes);
 app.use("/api/binary", binaryRoutes);
 app.use("/api/status", statusRoutes);
 app.use("/api/number", numberRoutes);
+app.use("/api/surprise", surpriseRoutes);
 
 // === Server Start ===
 app.listen(port, () => {
