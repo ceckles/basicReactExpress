@@ -11,18 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v2
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
         with:
-          version: 8
+          node-version: '20.x'        # Change from 18 to 20 here
+          registry-url: https://registry.npmjs.org/
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: pnpm
+      - run: corepack enable && pnpm install
 
-      - run: pnpm install
-
-      - run: pnpm exec semantic-release
+      - name: Run semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          #hope this works
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: pnpm exec semantic-release
+
