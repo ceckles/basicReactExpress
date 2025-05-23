@@ -36,6 +36,9 @@ importers:
       '@semantic-release/github':
         specifier: ^11.0.2
         version: 11.0.2(semantic-release@24.2.4)
+      '@semantic-release/npm':
+        specifier: ^12.0.1
+        version: 12.0.1(semantic-release@24.2.4)
       eslint:
         specifier: ^9.27.0
         version: 9.27.0
